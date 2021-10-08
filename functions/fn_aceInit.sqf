@@ -1,3 +1,9 @@
+/*  This handles all actions
+    Execution on: Client
+	
+	- Silence
+*/
+
 MS_varHolderWpn = "CBA_B_InvisibleTargetVehicle" createVehicle position player;
 MS_varHolderWpn setPos [0,0,0];
 
