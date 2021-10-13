@@ -25,6 +25,10 @@ class CfgFunctions
 			{
 				postInit=1;
 			};
+			class cbaInit
+			{
+				postInit=1;
+			};
 		};
 	};
 };
