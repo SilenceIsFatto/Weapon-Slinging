@@ -1,3 +1,4 @@
+/*
 weaponSlinged = false;
 [] spawn {
 	waitUntil {!isNull(findDisplay 46)};
@@ -16,3 +17,4 @@ weaponSlinged = false;
 		_handled;
 	};
 };
+*/

@@ -1,3 +1,11 @@
+/*
+	Author: Silence
+	
+	Called by: config.cpp
+	
+	Purpose: Sets up CBA actions/functions for slinging/retrieving
+*/
+
 // Variables (Defaults)
 weaponSlinged = false;
 MS_varHolderWpn setVariable ["weaponAngle",180,true]; // Set this to around 190 for a more tilted angle!
@@ -13,7 +21,9 @@ mst_fnc_slingWeapon = {
 		wpn = primaryWeapon player;
 		MS_wh attachTo [player, [0,0.77,0.3], "Spine3", true]; MS_wh setDir _var; MS_wh setVectorUp [-0.1,1,0.5];
 
-		clearMagazineCargoGlobal player;
+		{
+		  player removeMagazine _x;
+		} forEach magazines player;
 
 		player action ["DropWeapon", MS_wh, wpn];
 		[] spawn {sleep 0.9,
@@ -38,10 +48,19 @@ mst_fnc_slingWeaponBack = {
 	magArray = magazines player;
 	MS_wh = "GroundWeaponHolder_Scripted" createVehicle position player; 
 	
+	_selectedPos = selectRandom ["[0,0.43,0.1]","[-0.13,0.45,0]"];
+	if (_selectedPos == "[0,0.43,0.1]") then {
+		secondPos = 200;
+	} else {
+		secondPos = 15;
+	};
+	
 	wpn = primaryWeapon player; 
-	MS_wh attachTo [player, [-0.13,0.45,0], "Spine3", true]; MS_wh setDir 15; MS_wh setVectorUp [-0.1,2,0.5]; 
+	MS_wh attachTo [player, parseSimpleArray _selectedPos, "Spine3", true]; MS_wh setDir secondPos; MS_wh setVectorUp [-0.1,2,0.5]; 
 
-	clearMagazineCargoGlobal player;
+	{
+	  player removeMagazine _x;
+	} forEach magazines player;
 	
 	player action ["DropWeapon", MS_wh, wpn]; 
 	[] spawn {sleep 0.9,

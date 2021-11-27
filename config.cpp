@@ -1,22 +1,23 @@
 class CfgPatches
 {
-	class MS_WS
+	class Silence_WS
 	{
 		units[] = {};
 		weapons[] = {};
-		author="Mercury Studios - Silence";
+		author="Silence";
 		requiredVersion=1.9400001;
 		requiredAddons[]={};
 		version=0.1;
 	};
 };
+
 class CfgFunctions
 {
-	class MS_WS
+	class Silence_WS
 	{
 		class WS_Fnc
 		{
-			file="\MS_WS\functions";
+			file="\Silence_WS\functions";
 			class weaponSlingInit
 			{
 				postInit=1;
